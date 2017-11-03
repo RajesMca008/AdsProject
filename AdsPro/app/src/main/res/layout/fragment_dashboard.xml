@@ -1,0 +1,182 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.appants.adspro.DashboardFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="153dp"
+        android:background="@drawable/bg_gradiant"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="5dp">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/imageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            app:civ_border_color="#eeeeee"
+            app:civ_border_width="4dp"
+            app:civ_shadow="true"
+            app:civ_shadow_radius="10"
+            app:civ_shadow_color="#8BC34A"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textColor="#ffffff"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:text="Rajesh R" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:text="$12 \n OnAd \nbalance"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:text="$1101 \n Expected monthly\n income"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:text="$62 \n Withdraw \n amount"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="51dp"
+        android:background="@drawable/white_gradient"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="166dp">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Active : 674/1009"
+            android:textColor="@android:color/holo_green_dark" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="215dp"
+        android:gravity="center"
+        tools:ignore="MissingConstraints">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:weightSum="3"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@android:drawable/ic_menu_share" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_weight="1"
+                android:src="@android:drawable/ic_menu_agenda" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_weight="1"
+                android:src="@android:drawable/ic_menu_compass" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:text="Refer OneAd &amp; Earn!"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:text="Earn money upto 2.5 Lakhs per month \n by sharing your refer code with your \n frieds"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="130dp"
+                android:background="@drawable/referal_bg_img"
+                android:text="GFCD90"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_height="45dp" />
+            <Button
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:text="Refer Friend"
+                android:padding="5dp"
+                android:textColor="#ffffff"
+                android:background="@color/colorPrimary"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="#d3f7e302"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_height="70dp">
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:text="Projected monthly upto 2.5 L per month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="Assuming each member in your network refers 6 members"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>
