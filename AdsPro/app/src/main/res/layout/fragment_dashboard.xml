@@ -16,6 +16,8 @@
         android:orientation="vertical"
          >
 
+
+
         <com.mikhaellopez.circularimageview.CircularImageView
             android:layout_marginTop="5dp"
             android:id="@+id/imageView"
@@ -28,6 +30,8 @@
             app:civ_shadow_radius="10"
             app:civ_shadow_color="#8BC34A"
             android:src="@mipmap/ic_launcher" />
+
+
 
         <TextView
             android:id="@+id/textView3"
@@ -94,21 +98,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@android:drawable/ic_menu_share" />
+                android:src="@drawable/share_icon_big" />
 
             <android.support.design.widget.FloatingActionButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_weight="1"
-                android:src="@android:drawable/ic_menu_agenda" />
+                android:src="@drawable/earn_money_icon_big" />
 
             <android.support.design.widget.FloatingActionButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_weight="1"
-                android:src="@android:drawable/ic_menu_compass" />
+                android:src="@drawable/progress_icon_big" />
         </LinearLayout>
 
         <LinearLayout
@@ -134,7 +138,7 @@
 
             <TextView
                 android:layout_width="130dp"
-                android:background="@drawable/referal_bg_img"
+                android:background="@drawable/coupon_strip_icon"
                 android:text="GFCD90"
                 android:gravity="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
