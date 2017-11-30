@@ -14,8 +14,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:inputType="text|phone"
-        android:text="Date"
+        android:inputType="date"
+        android:hint="DOB"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
@@ -27,8 +27,9 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:inputType="text|phone"
-        android:text="Phone"
+        android:inputType="phone"
+        android:hint="Phone"
+        android:maxLength="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
@@ -40,9 +41,9 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:inputType="phone"
-        android:text="Name"
-        android:maxLength="10"
+        android:inputType="text"
+        android:hint="Name"
+        android:maxLength="25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -56,7 +57,6 @@
         android:layout_marginTop="16dp"
         android:hint="Password"
         android:inputType="textPassword"
-        android:text="Phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phone" />
@@ -70,7 +70,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:gravity="center"
-        android:hint="Referal Code"
+        android:hint="Referral Code"
         android:inputType="number"
         android:maxLength="8"
         android:background="@drawable/referal_bg_img"
@@ -91,13 +91,14 @@
         app:layout_constraintTop_toBottomOf="@+id/date_id">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/male_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Male" />
 
         <RadioButton
+            android:id="@+id/female_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -118,7 +119,7 @@
         app:layout_constraintTop_toBottomOf="@+id/referalCode" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/signup_button"
         android:layout_width="228dp"
         android:layout_height="50dp"
         android:layout_marginEnd="8dp"
