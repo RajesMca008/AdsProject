@@ -2,6 +2,7 @@ package com.appants.adspro;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,8 +15,9 @@ import android.widget.Toast;
 
 import com.appants.adspro.rest.ApiClient;
 import com.appants.adspro.rest.ApiInterface;
-import com.appants.adspro.rest.Register;
-import com.appants.adspro.rest.SignUpResponse;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Calendar;
 
@@ -29,6 +31,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText referl,nameField,phoneField,passField;
     private String gender;
     private ApiInterface apiInterface;
+    ProgressDialog progressDialog=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,12 +82,12 @@ public class RegistrationActivity extends AppCompatActivity {
                 {
                     Log.i("TEST",":Male:"+i);
 
-                    gender="Male";
+                    gender="M";
                 }
                 else if(i==R.id.female_btn)
                 {
                     Log.i("TEST",": Female:"+i);
-                    gender="Female";
+                    gender="F";
                 }
 
             }
@@ -96,28 +99,65 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 if(gender.length()>0 &&nameField.getText().toString().length()>0&& phoneField.getText().toString().length()>9 && passField.getText().toString().length()>3)
                 {
-                    SignupTask signupTask=new SignupTask();
-                    signupTask.execute();
 
-                    Register register=new Register();
-                    register.dob="2017-11-18";
-                    register.name="Raj";
-                    register.password="123456";
-                    register.gender="M";
-                    register.mobile_no="9030789643";
-                    register.referral_code="179908";
-                    Call<SignUpResponse> rest = apiInterface.getTopRatedMovies(register);
-                    rest.enqueue(new Callback<SignUpResponse>() {
+                    JSONObject paramObject = new JSONObject();
+                    try {
+                        paramObject.put("name",nameField.getText().toString()) ;
+                        paramObject.put("dob",dateEditText.getText().toString()) ;
+                        paramObject.put("password",passField.getText().toString()) ;
+                        paramObject.put("gender",gender) ;
+                        paramObject.put("mobile_no",phoneField.getText().toString()) ;
+                        paramObject.put("referral_code",referl.getText().toString()) ;
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    progressDialog=new ProgressDialog(RegistrationActivity.this);
+                    progressDialog.setMessage("Signing Up...");
+                    progressDialog.show();
+
+                    Call<String> userCall = apiInterface.getSignup(paramObject.toString());
+
+                    userCall.enqueue(new Callback<String>() {
                         @Override
-                        public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
-                            Log.i("TEST","onResponse"+response);
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            Log.i("Test","onResponse"+response);
+
+                            progressDialog.dismiss();
+                            if(response!=null)
+                            {
+                                try {
+                                    JSONObject object=new JSONObject(response.body());
+
+                                    if(object.getBoolean("success"))
+                                    {
+
+                                        finish();
+                                        Intent loginActivity=new Intent(RegistrationActivity.this,LoginActivity.class);
+                                        startActivity(loginActivity);
+                                    }else {
+
+                                        String error=object.getString("errors");
+
+                                        Toast.makeText(RegistrationActivity.this,"Error"+error,Toast.LENGTH_LONG).show();
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
                         }
 
                         @Override
-                        public void onFailure(Call<SignUpResponse> call, Throwable t) {
-                            Log.i("TEST","onFailure"+t.getMessage());
+                        public void onFailure(Call<String> call, Throwable t) {
+                            Log.i("Test","onFailure"+t);
+                            progressDialog.dismiss();
                         }
                     });
+
+
 
 
                 }else {
