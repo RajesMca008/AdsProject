@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.appants.adspro.rest.ApiClient;
 import com.appants.adspro.rest.ApiInterface;
 
 import org.json.JSONException;
@@ -71,6 +72,7 @@ public class MyNetworkFragment extends Fragment {
 
 
 
+
         JSONObject paramObject = new JSONObject();
         try {
             paramObject.put("user_id","1") ;
@@ -83,6 +85,8 @@ public class MyNetworkFragment extends Fragment {
      /*   progressDialog=new ProgressDialog(HomeActivity.ctx);
         progressDialog.setMessage("Signing Up...");
         progressDialog.show();*/
+
+        apiInterface= ApiClient.getClient().create(ApiInterface.class);
 
         Call<String> userCall = apiInterface.getLevelStatus(paramObject.toString());
 
