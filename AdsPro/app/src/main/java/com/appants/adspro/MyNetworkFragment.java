@@ -1,12 +1,22 @@
 package com.appants.adspro;
 
-import android.content.Context;
-import android.net.Uri;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.appants.adspro.rest.ApiInterface;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -26,7 +36,8 @@ public class MyNetworkFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-
+    private ApiInterface apiInterface;
+    ProgressDialog progressDialog=null;
     public MyNetworkFragment() {
         // Required empty public constructor
     }
@@ -48,7 +59,8 @@ public class MyNetworkFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
+    private RecyclerView recyclerView;
+    private LevelsListAdapter mAdapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,13 +68,68 @@ public class MyNetworkFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+
+        JSONObject paramObject = new JSONObject();
+        try {
+            paramObject.put("user_id","1") ;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+     /*   progressDialog=new ProgressDialog(HomeActivity.ctx);
+        progressDialog.setMessage("Signing Up...");
+        progressDialog.show();*/
+
+        Call<String> userCall = apiInterface.getLevelStatus(paramObject.toString());
+
+        userCall.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.i("Test","onResponse"+response);
+
+                //    progressDialog.dismiss();
+                if(response!=null)
+                {
+                    try {
+                        JSONObject object=new JSONObject(response.body());
+
+                        Log.v("TAG....","Result..."+object.toString());
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.i("Test","onFailure"+t);
+                //  progressDialog.dismiss();
+            }
+        });
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_network, container, false);
+        View view= inflater.inflate(R.layout.fragment_my_network, container, false);
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+
+
+
+
+
+
+
+
+        return view;
     }
 
 

@@ -41,7 +41,7 @@
             android:layout_weight="1"
             android:textColor="#ffffff"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:text="Rajesh R" />
+            android:text="XXXXX" />
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"

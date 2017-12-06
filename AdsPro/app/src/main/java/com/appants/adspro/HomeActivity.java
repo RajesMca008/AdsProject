@@ -1,5 +1,6 @@
 package com.appants.adspro;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,11 +14,11 @@ import android.transition.Transition;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.Window;
-import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity implements DashboardFragment.OnFragmentInteractionListener{
 
 
+    public static Context ctx;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -62,6 +63,7 @@ public class HomeActivity extends AppCompatActivity implements DashboardFragment
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        ctx=getApplicationContext();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
